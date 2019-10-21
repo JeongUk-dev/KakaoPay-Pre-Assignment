@@ -8,6 +8,3 @@ PostActvity: 포스트를 선택해서 보여지는 상세 화면 입니다. 별
 
 - Android Studio 3.4.2
 - Android Jetpack(LiveData, ViewModel), Glide, Retrofit2, circleimageview 등을 이용했습니다.
-
-- 아이디: jaydev.android
-- 비밀번호: dlwjddnr
