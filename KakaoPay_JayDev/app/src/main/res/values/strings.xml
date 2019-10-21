@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">JayDevKakaoPay</string>
+    <string name="network_fail">네트워크 오류:%s</string>
+
+
+    <string name="login_idHint">아이디를 입력하세요.</string>
+    <string name="login_passwordHint">비밀번호를 입력하세요.</string>
+    <string name="login_login">로그인</string>
+    <string name="login_invalidInfo">등록되지 않은 아이디나 패스워드 입니다.</string>
+
+    <string name="main_postCount">게시물</string>
+    <string name="main_followerCount">팔로워</string>
+    <string name="main_followingCount">팔로잉</string>
+
+    <string name="post_likeCount">좋아요 %d개</string>
+    <string name="post_commentCount">댓글 %d개</string>
+
+</resources>

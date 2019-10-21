@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<dimen name="defaultMargin">8dp</dimen>
+	<dimen name="textSize">14dp</dimen>
+	<dimen name="titleTextSize">16dp</dimen>
+
+	<dimen name="login_inputWidth">220dp</dimen>
+
+	<dimen name="main_profileView">90dp</dimen>
+	<dimen name="main_profileView_margin">10dp</dimen>
+	<dimen name="main_titleTextSize">16dp</dimen>
+	<dimen name="main_introduceMaxHeight">100dp</dimen>
+</resources>

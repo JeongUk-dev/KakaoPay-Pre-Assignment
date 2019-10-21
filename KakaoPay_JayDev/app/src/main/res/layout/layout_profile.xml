@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<data>
+
+		<variable
+			name="userProfile"
+			type="com.jaydev.instagram.data.UserProfile" />
+	</data>
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent">
+
+		<androidx.constraintlayout.widget.Guideline
+			android:id="@+id/profileGuideline"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			app:layout_constraintGuide_percent="0.3" />
+
+		<de.hdodenhof.circleimageview.CircleImageView
+			android:id="@+id/userImageView"
+			imageLoad="@{userProfile.profilePicture}"
+			android:layout_width="@dimen/main_profileView"
+			android:layout_height="@dimen/main_profileView"
+			android:layout_marginTop="@dimen/main_profileView_margin"
+			app:layout_constraintBottom_toTopOf="@+id/nameTextView"
+			app:layout_constraintEnd_toStartOf="@id/profileGuideline"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintWidth_default="wrap"
+			app:layout_constraintWidth_percent="0.1"
+			tools:src="#000" />
+
+		<LinearLayout
+			android:id="@+id/feedLayout"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="8dp"
+			android:orientation="vertical"
+			app:layout_constraintBottom_toTopOf="@+id/nameTextView"
+			app:layout_constraintEnd_toStartOf="@id/followerLayout"
+			app:layout_constraintStart_toEndOf="@id/profileGuideline"
+			app:layout_constraintTop_toTopOf="parent">
+
+			<androidx.appcompat.widget.AppCompatTextView
+				android:id="@+id/feedCountTextView"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center"
+				android:text="@{userProfile.counts.media.toString()}"
+				android:textStyle="bold"
+				tools:text="000" />
+
+			<androidx.appcompat.widget.AppCompatTextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:gravity="center"
+				android:text="@string/main_postCount" />
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/followerLayout"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="8dp"
+			android:orientation="vertical"
+			app:layout_constraintBottom_toTopOf="@+id/nameTextView"
+			app:layout_constraintEnd_toStartOf="@id/followingLayout"
+			app:layout_constraintStart_toEndOf="@id/feedLayout"
+			app:layout_constraintTop_toTopOf="parent">
+
+			<androidx.appcompat.widget.AppCompatTextView
+				android:id="@+id/followerCountTextView"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center"
+				android:text="@{userProfile.counts.followedBy.toString()}"
+				android:textStyle="bold"
+				tools:text="000" />
+
+			<androidx.appcompat.widget.AppCompatTextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:gravity="center"
+				android:text="@string/main_followerCount" />
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/followingLayout"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="8dp"
+			android:orientation="vertical"
+			app:layout_constraintBottom_toTopOf="@+id/nameTextView"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toEndOf="@id/followerLayout"
+			app:layout_constraintTop_toTopOf="parent">
+
+			<androidx.appcompat.widget.AppCompatTextView
+				android:id="@+id/followingCountTextView"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center"
+				android:text="@{userProfile.counts.follows.toString()}"
+				android:textStyle="bold"
+				tools:text="000" />
+
+			<androidx.appcompat.widget.AppCompatTextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:gravity="center"
+				android:text="@string/main_followingCount" />
+
+		</LinearLayout>
+
+		<androidx.appcompat.widget.AppCompatTextView
+			android:id="@+id/nameTextView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/defaultMargin"
+			android:layout_marginEnd="@dimen/defaultMargin"
+			android:text="@{userProfile.fullName}"
+			android:textStyle="bold"
+			app:layout_constrainedWidth="true"
+			app:layout_constraintStart_toStartOf="@id/userImageView"
+			app:layout_constraintTop_toBottomOf="@id/userImageView"
+			tools:text="userName" />
+
+		<androidx.appcompat.widget.AppCompatTextView
+			android:id="@+id/introduceTextView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="@dimen/defaultMargin"
+			android:layout_marginBottom="@dimen/defaultMargin"
+			android:text="@{userProfile.bio}"
+			app:layout_constrainedWidth="true"
+			app:layout_constraintStart_toStartOf="@id/userImageView"
+			app:layout_constraintTop_toBottomOf="@id/nameTextView"
+			tools:text="introduce text area" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

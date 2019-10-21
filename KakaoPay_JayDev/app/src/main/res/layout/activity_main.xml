@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<data>
+
+		<variable
+			name="viewModel"
+			type="com.jaydev.instagram.view.main.MainViewModel" />
+
+	</data>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		tools:context=".view.main.MainActivity">
+
+		<com.google.android.material.appbar.AppBarLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<androidx.appcompat.widget.Toolbar
+				android:id="@+id/toolbar"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:minHeight="?attr/actionBarSize"
+				android:theme="@style/Toolbar"
+				app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+				app:title="@{viewModel.userProfile.username}"
+				tools:title="userName" />
+
+		</com.google.android.material.appbar.AppBarLayout>
+
+		<androidx.core.widget.NestedScrollView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<include
+					android:id="@+id/profileLayout"
+					layout="@layout/layout_profile"
+					app:userProfile="@{viewModel.userProfile}" />
+
+				<androidx.recyclerview.widget.RecyclerView
+					android:id="@+id/postRecyclerView"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="@dimen/defaultMargin"
+					app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+					app:layout_constraintTop_toBottomOf="@id/profileLayout"
+					app:spanCount="3"
+					tools:itemCount="7"
+					tools:listitem="@layout/item_post_view" />
+
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+		</androidx.core.widget.NestedScrollView>
+	</LinearLayout>
+</layout>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<data>
+
+		<variable
+			name="post"
+			type="com.jaydev.instagram.data.Post" />
+
+	</data>
+
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		tools:context=".view.post.PostActivity">
+
+		<LinearLayout
+			android:id="@+id/userInfoLayout"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:padding="@dimen/defaultMargin"
+			app:layout_constraintBottom_toTopOf="@id/postImageView"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent">
+
+			<de.hdodenhof.circleimageview.CircleImageView
+				android:id="@+id/userImageView"
+				imageLoad="@{post.user.profilePicture}"
+				android:layout_width="38dp"
+				android:layout_height="38dp"
+				tools:src="#000" />
+
+			<androidx.appcompat.widget.AppCompatTextView
+				android:id="@+id/userNameTextView"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center"
+				android:layout_marginStart="@dimen/defaultMargin"
+				android:text="@{post.user.username}"
+				android:textSize="@dimen/titleTextSize"
+				android:textStyle="bold"
+				tools:text="userName" />
+
+		</LinearLayout>
+
+		<androidx.appcompat.widget.AppCompatImageView
+			android:id="@+id/postImageView"
+			imageLoad="@{post.images.standardResolution.url}"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			app:layout_constraintDimensionRatio="1:1"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/userInfoLayout" />
+
+		<androidx.appcompat.widget.AppCompatImageView
+			android:id="@+id/likeImageView"
+			android:layout_width="28dp"
+			android:layout_height="28dp"
+			android:layout_margin="@dimen/defaultMargin"
+			android:src="@{post.userHasLiked ? @drawable/icon_like : @drawable/icon_like_border}"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/postImageView" />
+
+		<androidx.appcompat.widget.AppCompatTextView
+			android:id="@+id/likeCountTextView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="@dimen/defaultMargin"
+			android:text="@{@string/post_likeCount(post.likes.count)}"
+			android:textStyle="bold"
+			app:layout_constraintBottom_toBottomOf="@id/likeImageView"
+			app:layout_constraintStart_toEndOf="@id/likeImageView"
+			app:layout_constraintTop_toTopOf="@id/likeImageView"
+			tools:text="@string/post_likeCount" />
+
+		<androidx.appcompat.widget.AppCompatTextView
+			android:id="@+id/captionTextView"
+			caption="@{post.caption}"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_margin="@dimen/defaultMargin"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/likeCountTextView"
+			tools:text="caption" />
+
+		<androidx.appcompat.widget.AppCompatTextView
+			android:id="@+id/commentCountTextView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="@dimen/defaultMargin"
+			android:text="@{@string/post_commentCount(post.comments.count)}"
+			android:textStyle="bold"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/captionTextView"
+			tools:text="@string/post_commentCount" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

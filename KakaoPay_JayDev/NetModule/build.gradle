@@ -1,0 +1,38 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+	compileSdkVersion projectCompileSdkVersion
+
+	defaultConfig {
+		minSdkVersion projectMinSdkVersion
+		targetSdkVersion projectTargetSdkVersion
+		versionCode 1
+		versionName "1.0"
+	}
+
+	buildTypes {
+		release {
+			minifyEnabled true
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+		}
+	}
+	compileOptions {
+		sourceCompatibility javaSourceVersion
+		targetCompatibility javaTargetVersion
+	}
+}
+
+dependencies {
+	implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
+	api "com.google.code.gson:gson:$gson_version"
+	api "com.squareup.okhttp3:okhttp:$okhttp_version"
+	api "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+	api "com.squareup.retrofit2:retrofit:$retrofit_version"
+	api "com.squareup.retrofit2:converter-gson:$retrofit_version"
+	api "com.squareup.retrofit2:retrofit-mock:$retrofit_version"
+}

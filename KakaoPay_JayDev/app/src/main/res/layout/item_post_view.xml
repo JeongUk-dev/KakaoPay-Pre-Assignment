@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<data>
+
+		<variable
+			name="thumbnailUrl"
+			type="String" />
+
+		<variable
+			name="clickListener"
+			type="android.view.View.OnClickListener" />
+	</data>
+
+	<com.jaydev.instagram.common.SquareImageView
+		android:id="@+id/imageView"
+		imageLoad="@{thumbnailUrl}"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:onClick="@{clickListener}"
+		android:padding="1dp"
+		tools:background="@color/colorPrimaryDark" />
+
+</layout>
